@@ -1,16 +1,13 @@
-import SK.gnome.capabilities.twain.TwainActivity;
 import SK.gnome.morena.Morena;
-import SK.gnome.morena.MorenaException;
 import SK.gnome.morena.MorenaImage;
-import SK.gnome.morena.MorenaSource;
-import SK.gnome.sane.SaneConnection;
 import SK.gnome.twain.TwainManager;
 import SK.gnome.twain.TwainSource;
-import SK.gnome.capabilities.*;
 
-import javax.xml.transform.Source;
-import java.awt.image.ColorModel;
-import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
 
 /**
  * Created by nka on 19/04/2016.
@@ -123,6 +120,11 @@ public class Capture {
                 //        ExtendedImageInfo.PageNumber, ExtendedImageInfo.PageSide,
                 //        ExtendedImageInfo.FrameNumber, ExtendedImageInfo.BookName
                 //).ToList();
+                Image image2= Toolkit.getDefaultToolkit().createImage(image);
+                BufferedImage bimg=new BufferedImage(image2.getWidth(null), image2.getHeight(null), BufferedImage.TYPE_INT_RGB);
+                bimg.createGraphics().drawImage(image2, 0, 0, null);
+//                ImageIO.write(bimg,"jpg",new File("test.jpg"));
+                ImageIO.write(bimg,"TIFF",new File("test.tiff"));
             }
             while (source.hasMoreImages());
         }
