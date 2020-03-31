@@ -29,7 +29,7 @@ public class Capture {
         TwainSource sourceDefault=TwainManager.getDefaultSource();  // Pour utilisé la dernière source utilisée
         System.err.println("Default source is "+sourceDefault);
 
-        TwainSource source=TwainManager.selectSource(null);
+        TwainSource source=TwainManager.selectSource(sourceDefault);
         System.err.println("Selected source is "+source);
 
         // affichage de toute les capabilities
@@ -123,8 +123,10 @@ public class Capture {
                 Image image2= Toolkit.getDefaultToolkit().createImage(image);
                 BufferedImage bimg=new BufferedImage(image2.getWidth(null), image2.getHeight(null), BufferedImage.TYPE_INT_RGB);
                 bimg.createGraphics().drawImage(image2, 0, 0, null);
-//                ImageIO.write(bimg,"jpg",new File("test.jpg"));
-                ImageIO.write(bimg,"TIFF",new File("test.tiff"));
+                ImageIO.write(bimg,"jpg",new File("C://tmp//test.jpg"));
+//                System.err.println("before file written1");
+//                ImageIO.write(bimg,"TIFF",new File("C://image.tiff"));
+//                System.err.println("after file written1");
             }
             while (source.hasMoreImages());
         }
