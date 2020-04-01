@@ -3,6 +3,7 @@ import SK.gnome.morena.MorenaImage;
 import SK.gnome.twain.TwainManager;
 import SK.gnome.twain.TwainSource;
 
+//import javax.imageio.ImageIO;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -125,7 +126,7 @@ public class Capture {
                 bimg.createGraphics().drawImage(image2, 0, 0, null);
                 ImageIO.write(bimg,"jpg",new File("C://tmp//test.jpg"));
 //                System.err.println("before file written1");
-//                ImageIO.write(bimg,"TIFF",new File("C://image.tiff"));
+                ImageIO.write(bimg,"TIFF",new File("C://tmp//image.tiff"));
 //                System.err.println("after file written1");
             }
             while (source.hasMoreImages());
